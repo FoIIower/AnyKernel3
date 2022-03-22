@@ -1,2 +1,14 @@
 on property:sys.boot_completed=1
-exec u:r:magisk:s0 root root -- /sbin/init.lx.sh
+        exec u:r:magisk:s0 root root -- /system/bin/mount -t tmpfs -o uid=0,gid=0,mode=0755 cgroup /sys/fs/cgroup
+        exec u:r:magisk:s0 root root -- /system/bin/mkdir -p /sys/fs/cgroup/cpu
+        exec u:r:magisk:s0 root root -- /system/bin/mkdir -p /sys/fs/cgroup/cpuacct
+        exec u:r:magisk:s0 root root -- /system/bin/mkdir -p /sys/fs/cgroup/blkio
+        exec u:r:magisk:s0 root root -- /system/bin/mkdir -p /sys/fs/cgroup/memory
+        exec u:r:magisk:s0 root root -- /system/bin/mkdir -p /sys/fs/cgroup/devices
+        exec u:r:magisk:s0 root root -- /system/bin/mkdir -p /sys/fs/cgroup/pids
+        exec u:r:magisk:s0 root root -- /system/bin/mount -n -t cgroup -o cpu cgroup /sys/fs/cgroup/cpu
+        exec u:r:magisk:s0 root root -- /system/bin/mount -n -t cgroup -o cpu cgroup /sys/fs/cgroup/cpuacct
+        exec u:r:magisk:s0 root root -- /system/bin/mount -n -t cgroup -o cpu cgroup /sys/fs/cgroup/blkio
+        exec u:r:magisk:s0 root root -- /system/bin/mount -n -t cgroup -o cpu cgroup /sys/fs/cgroup/memory
+        exec u:r:magisk:s0 root root -- /system/bin/mount -n -t cgroup -o cpu cgroup /sys/fs/cgroup/devices
+        exec u:r:magisk:s0 root root -- /system/bin/mount -n -t cgroup -o cpu cgroup /sys/fs/cgroup/pids
